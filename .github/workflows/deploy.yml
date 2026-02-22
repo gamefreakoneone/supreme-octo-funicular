@@ -39,6 +39,8 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: ./app
+      - name: Copy CNAME
+        run: cp ./app/public/CNAME ./app/dist/CNAME
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
