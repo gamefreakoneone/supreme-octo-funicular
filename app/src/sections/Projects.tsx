@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { Github, Youtube, Sparkles, BookOpen, Shield, Brain } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
+import posterPhotoImage from '../../public/images/poster-photo.jpg';
+import whereWeLeftOffImage from '../../public/images/where-we-left-off.jpg';
 
 const projects = [
   {
@@ -52,7 +54,7 @@ const projects = [
     links: {
       github: 'https://github.com/gamefreakoneone/Ctrl-Alt-Del-Hate',
     },
-    image: '/images/poster-photo.jpg',
+    image: posterPhotoImage,
     icon: Shield,
     color: 'from-accent-orange/30 to-accent-pink/30',
   },
@@ -69,7 +71,7 @@ const projects = [
     links: {
       github: 'https://github.com/gamefreakoneone/Where-we-left-off-reader',
     },
-    image: '/images/where-we-left-off.jpg',
+    image: whereWeLeftOffImage,
     icon: BookOpen,
     color: 'from-accent-pink/30 to-accent-cyan/30',
   },

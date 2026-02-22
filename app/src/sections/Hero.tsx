@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Youtube } from 'lucide-react';
+import heroImage from '../../public/images/hero-photo-new.jpg';
 
 export default function Hero() {
   const scrollToSection = (href: string) => {
@@ -146,7 +147,7 @@ export default function Hero() {
               {/* Photo - SQUARE with rounded corners */}
               <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden border border-white/10">
                 <img
-                  src="/images/hero-photo-new.jpg"
+                  src={heroImage}
                   alt="Amogh Biju"
                   className="w-full h-full object-cover"
                 />
