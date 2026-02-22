@@ -1,0 +1,100 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[left=0.5in,right=0.5in,top=0.5in,bottom=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{mathptmx}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{4pt}{2pt}
+
+\setlist[itemize]{leftmargin=*,noitemsep,topsep=1pt,parsep=0pt,partopsep=0pt}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{AMOGH BIJU}}\\[2pt]
+    Los Angeles, California | 213-681-7507 | amogh@outlook.com | \href{https://www.linkedin.com/in/amogh-biju/}{linkedin.com/in/amogh-biju} | \href{https://github.com/gamefreakoneone}{github.com/gamefreakoneone}
+\end{center}
+
+\vspace{-10pt}
+
+\section*{EDUCATION}
+\textbf{University of Southern California} \hfill January 2024--December 2025\\
+Master of Science in Computer Science
+
+\vspace{-6pt}
+
+\section*{EXPERIENCE}
+
+\textbf{Research Assistant} \hfill February 2026--Present\\
+\textit{USC Viterbi School of Engineering, Department of Computer Science, Los Angeles, CA}
+\begin{itemize}
+    \item Designed real-time fall detection system by fine-tuning Ultralytics YOLO11 on 111 annotated images, achieving 0.923 mAP@0.5, 94\% recall, and 0.90 F1 score for elderly safety monitoring
+    \item Reduced false positive alerts by implementing a 3.5-second confirmation buffer with pose analysis, delivering email notifications with screenshots within 6--8 seconds of fall events
+    \item Constructed a natural-language video query pipeline by combining SAM3 segmentation with temporal video analysis and integrating OpenAI and Gemini APIs, enabling queries over patient daily activities
+\end{itemize}
+
+\vspace{-2pt}
+
+\textbf{Research Intern} \hfill June 2025--September 2025\\
+\textit{USC Institute for Creative Technologies, Los Angeles, California}
+\begin{itemize}
+    \item Collaborated with team of 4 (2 PhD students, 1 postdoc, 1 peer) to build 3D reconstruction pipeline integrating RDD Structure-from-Motion, Doppelganger++ neural matching, and Gaussian Splatting
+    \item Implemented feature extraction pipeline using RDD descriptors and LightGlue matcher, processing 500+ images per scene and reducing reconstruction time from 8 to 5 minutes (37\% improvement)
+    \item Presented final pipeline demo to lab team; optimized Doppelganger++ duplicate detection through strategic image subset selection, improving point cloud quality
+\end{itemize}
+
+\vspace{-2pt}
+
+\textbf{Research Intern, Department of Computer Science} \hfill June 2022--July 2023\\
+\textit{IIT Hyderabad, Hyderabad, India}
+\begin{itemize}
+    \item Partnered with PhD researcher from Osaka University through weekly technical sessions, co-authoring IEEE Access survey paper analyzing 11 cellular network monitoring applications across 2G--5G architectures
+    \item Captured physical layer cellular data using MobileInsight chipset-level monitoring and Dragonet's VPN-based approach, analyzing RRC/NAS signaling and traffic patterns across multiple Android devices
+\end{itemize}
+
+\vspace{-4pt}
+
+\section*{PROJECTS}
+
+\textbf{Defeat the Darkness -- AI-Powered Beat-Em-Up Game} \hfill \href{https://github.com/gamefreakoneone/all-your-base-is-ours}{\texttt{github.com/gamefreakoneone/all-your-base-is-ours}}
+\begin{itemize}
+    \item Constructed real-time multimodal AI game by integrating three Gemini 3 capabilities (image generation, structured output, live voice streaming), delivering unique procedurally-generated gameplay per session
+    \item Architected parallel asset generation system by running 5 concurrent Gemini Pro image calls during player onboarding, eliminating perceived wait time despite multiple API round-trips
+    \item Created self-correcting asset pipeline by implementing LLM-as-a-Judge validation with automatic retry and fallback, ensuring consistent sprite quality with a 70+ score threshold
+\end{itemize}
+
+\vspace{-2pt}
+
+\textbf{Where We Left Off -- AI Reading Companion} \hfill \href{https://github.com/gamefreakoneone/Where-we-left-off-reader}{\texttt{github.com/gamefreakoneone/Where-we-left-off-reader}}
+\begin{itemize}
+    \item Developed spoiler-protected reading companion by implementing chapter-aware RAG with ChromaDB metadata filtering, enabling contextual Q\&A restricted to user's current reading progress
+    \item Built agentic Q\&A system by designing LangGraph workflows with conditional semantic search and refinement loops, delivering contextually-grounded answers without future plot spoilers
+    \item Crafted entity resolution pipeline by implementing alias canonicalization across chapters, enabling unified character tracking despite varying name references (e.g., Elizabeth/Lizzy/Ms.\ Bennet)
+\end{itemize}
+
+\vspace{-2pt}
+
+\textbf{Ctrl+Alt+Del Hate -- Explainable Hate Speech Detection} \hfill \href{https://github.com/gamefreakoneone/Ctrl-Alt-Del-Hate}{\texttt{github.com/gamefreakoneone/Ctrl-Alt-Del-Hate}}
+\begin{itemize}
+    \item Trained multi-task hate speech detection model by LoRA-finetuning LLaMA-3.2-1B on 39K annotated comments, achieving 83.7\% accuracy and 0.693 F1 on multi-class classification
+    \item Formulated three-task classification architecture with shared encoder and task-specific heads, delivering 0.59 Micro F1 on 45 demographic target groups and 0.53 MAE on 10 ordinal toxicity facets
+    \item Attained 0.80 Spearman correlation on hate speech severity scoring, enabling fine-grained content moderation beyond binary classification
+\end{itemize}
+
+\vspace{-4pt}
+
+\section*{TECHNICAL SKILLS}
+\textbf{Languages:} Python, JavaScript, TypeScript, SQL, C++, HTML/CSS, Bash \\[2pt]
+\textbf{AI/ML:} PyTorch, YOLO, LLaMA, LoRA, LangChain, LangGraph, Hugging Face Transformers, OpenAI API, Gemini API, SAM3, RAG \\[2pt]
+\textbf{Web \& Backend:} React, Next.js, Flask, FastAPI, Node.js, REST APIs, WebSockets, Chrome Extensions, Vercel \\[2pt]
+\textbf{Data \& Infrastructure:} MongoDB, PostgreSQL, ChromaDB, Redis, Docker, AWS (S3, EC2), Git, Linux \\[2pt]
+\textbf{Computer Vision \& 3D:} OpenCV, COLMAP, Gaussian Splatting, Structure-from-Motion, LightGlue, RDD Descriptors
+
+\end{document}
