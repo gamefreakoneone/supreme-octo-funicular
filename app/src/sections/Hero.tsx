@@ -12,23 +12,8 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 animated-gradient" />
-      
-      {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-purple/20 rounded-full blur-3xl floating-orb" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent-pink/15 rounded-full blur-3xl floating-orb-delayed" />
-      <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-accent-cyan/10 rounded-full blur-3xl floating-orb" style={{ animationDelay: '-10s' }} />
-      
-      {/* Grid overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                           linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* Industrial Grid Background */}
+      <div className="absolute inset-0 grid-background opacity-80" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -49,9 +34,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6"
+              className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 uppercase tracking-tight"
             >
-              Amogh <span className="text-gradient">Biju</span>
+              Amogh <span className="text-industrial">Biju_</span>
             </motion.h1>
 
             {/* Tagline */}
@@ -83,22 +68,22 @@ export default function Hero() {
             >
               <motion.button
                 onClick={() => scrollToSection('#projects')}
-                className="px-8 py-3 bg-white text-[#0f0f1a] font-semibold rounded-full hover:shadow-glow transition-all duration-300"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="px-8 py-3 bg-[#c5ef67] text-[#1a1a18] font-bold rounded-none hover:bg-white transition-colors duration-200 border border-[#c5ef67] hover:border-white shadow-hard-offset"
+                whileHover={{ y: -2, x: -2 }}
+                whileTap={{ y: 0, x: 0, boxShadow: "none" }}
               >
-                View Projects
+                [ VIEW_PROJECTS ]
               </motion.button>
               <motion.a
                 href="https://youtube.com/@thejunkyard-117"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-3 border border-white/20 text-white font-medium rounded-full hover:bg-white/5 hover:border-white/40 transition-all duration-300 flex items-center justify-center gap-2"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="px-8 py-3 tech-glass text-white font-medium rounded-none hover:bg-white/10 transition-colors duration-200 flex items-center justify-center gap-2 shadow-hard-offset-violet"
+                whileHover={{ y: -2, x: -2 }}
+                whileTap={{ y: 0, x: 0, boxShadow: "none" }}
               >
                 <Youtube size={18} />
-                YouTube
+                YOUTUBE_DATA
               </motion.a>
             </motion.div>
 
@@ -140,36 +125,45 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative">
-              {/* Glow effect behind photo */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-accent-purple/30 via-accent-pink/20 to-accent-cyan/30 rounded-2xl blur-2xl" />
+            <div className="relative group">
+              {/* Brutalist Frame behind photo */}
+              <div className="absolute -inset-2 bg-[#282824] border border-[#434143] transform translate-x-4 translate-y-4" />
               
-              {/* Photo - SQUARE with rounded corners */}
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden border border-white/10">
+              {/* Photo - Stark SQUARE */}
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-none overflow-hidden border border-[#434143] bg-[#1a1a18]">
+                {/* Tech overlay scanline effect */}
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+')] mix-blend-overlay z-10 pointer-events-none" />
+                
                 <img
                   src={heroImage}
                   alt="Amogh Biju"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-500"
                 />
+                
+                {/* Crosshairs */}
+                <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#c5ef67] z-20" />
+                <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[#c5ef67] z-20" />
+                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-[#c5ef67] z-20" />
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#c5ef67] z-20" />
               </div>
 
-              {/* Floating badges */}
+              {/* Data tags */}
               <motion.div
-                className="absolute -bottom-3 -right-3 px-4 py-2 glass rounded-full"
+                className="absolute -bottom-4 -right-4 px-3 py-1 tech-solid text-xs tracking-widest text-[#7b6b89] border-[#7b6b89]"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1 }}
               >
-                <span className="text-accent-purple text-sm font-medium">USC Viterbi</span>
+                LOC: USC_VITERBI
               </motion.div>
               
               <motion.div
-                className="absolute -top-3 -left-3 px-4 py-2 glass rounded-full"
+                className="absolute -top-4 -left-4 px-3 py-1 tech-solid text-xs tracking-widest text-[#c5ef67] border-[#c5ef67]"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.1 }}
               >
-                <span className="text-accent-cyan text-sm font-medium">AI Researcher</span>
+                FUNC: AI_RSCH
               </motion.div>
             </div>
           </motion.div>

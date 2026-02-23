@@ -3,14 +3,14 @@ import { Code2, Brain, Eye, Layers, MessageSquare, Database, Cpu, Zap } from 'lu
 import ScrollReveal from '../components/ScrollReveal';
 
 const skills = [
-  { name: 'Python', icon: Code2, color: 'text-accent-cyan' },
-  { name: 'PyTorch', icon: Brain, color: 'text-accent-orange' },
-  { name: 'LangChain', icon: MessageSquare, color: 'text-accent-purple' },
-  { name: 'React', icon: Layers, color: 'text-accent-cyan' },
-  { name: 'TypeScript', icon: Code2, color: 'text-accent-pink' },
-  { name: 'Computer Vision', icon: Eye, color: 'text-accent-orange' },
-  { name: 'LLMs', icon: Brain, color: 'text-accent-purple' },
-  { name: 'RAG', icon: Database, color: 'text-accent-cyan' },
+  { name: 'Python', icon: Code2, color: '#06b6d4' },
+  { name: 'PyTorch', icon: Brain, color: '#f97316' },
+  { name: 'LangChain', icon: MessageSquare, color: '#7b6b89' },
+  { name: 'React', icon: Layers, color: '#06b6d4' },
+  { name: 'TypeScript', icon: Code2, color: '#ec4899' },
+  { name: 'Computer Vision', icon: Eye, color: '#f97316' },
+  { name: 'LLMs', icon: Brain, color: '#7b6b89' },
+  { name: 'RAG', icon: Database, color: '#06b6d4' },
 ];
 
 const currentWork = [
@@ -18,25 +18,25 @@ const currentWork = [
     title: 'Project Memoria',
     description: 'New features for our dementia care assistant—expanding capabilities and improving user experience.',
     icon: Brain,
-    color: 'from-accent-purple/20 to-accent-pink/20',
+    color: '#7b6b89',
   },
   {
     title: 'NanoGPT',
     description: 'Training a GPT model from scratch to understand the fundamentals of transformer architectures.',
     icon: Cpu,
-    color: 'from-accent-cyan/20 to-accent-purple/20',
+    color: '#06b6d4',
   },
   {
     title: 'Reinforcement Learning',
     description: 'Exploring RL through game environments—narrowing down the perfect game for experiments.',
     icon: Zap,
-    color: 'from-accent-orange/20 to-accent-pink/20',
+    color: '#f97316',
   },
   {
     title: 'Agentic Game Modding',
     description: 'Building a system where AI agents edit game files to create custom mods automatically.',
     icon: Code2,
-    color: 'from-accent-pink/20 to-accent-cyan/20',
+    color: '#ec4899',
   },
 ];
 
@@ -44,18 +44,15 @@ export default function About() {
   return (
     <section id="about" className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-purple/5 to-transparent" />
-      
-      {/* Floating orb */}
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-accent-cyan/10 rounded-full blur-3xl floating-orb" />
+      <div className="absolute inset-0 grid-background opacity-40 mix-blend-overlay" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
           {/* Left Column - Bio */}
           <div className="lg:col-span-3">
             <ScrollReveal>
-              <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-8">
-                About <span className="text-gradient">Me</span>
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-8 uppercase tracking-tight">
+                [ <span className="text-[#c5ef67]">About_Me</span> ]
               </h2>
             </ScrollReveal>
 
@@ -96,11 +93,12 @@ export default function About() {
                       transition={{ delay: 0.3 + index * 0.05 }}
                       whileHover={{ 
                         scale: 1.05,
-                        backgroundColor: 'rgba(255,255,255,0.1)',
+                        borderColor: skill.color,
+                        boxShadow: `2px 2px 0px 0px ${skill.color}`
                       }}
-                      className="flex items-center gap-2 px-4 py-2 glass rounded-full text-zinc-300 text-sm font-medium transition-all duration-200 cursor-default"
+                      className="flex items-center gap-2 px-4 py-2 bg-[#1a1a18] border border-[#434143] text-zinc-300 text-sm font-medium transition-all duration-200 cursor-default"
                     >
-                      <skill.icon size={14} className={skill.color} />
+                      <skill.icon size={14} style={{ color: skill.color }} />
                       {skill.name}
                     </motion.div>
                   ))}
@@ -112,8 +110,8 @@ export default function About() {
           {/* Right Column - Currently Working On */}
           <div className="lg:col-span-2">
             <ScrollReveal delay={0.3}>
-              <h3 className="font-display text-xl font-semibold text-white mb-6">
-                Currently Working On
+              <h3 className="font-display text-xl font-bold text-white mb-6 uppercase tracking-tight">
+                Current_Processes
               </h3>
             </ScrollReveal>
 
@@ -121,12 +119,13 @@ export default function About() {
               {currentWork.map((item, index) => (
                 <ScrollReveal key={item.title} delay={0.4 + index * 0.1}>
                   <motion.div
-                    whileHover={{ x: 4, scale: 1.02 }}
-                    className={`p-4 rounded-xl bg-gradient-to-r ${item.color} border border-white/5 backdrop-blur-sm hover:border-white/10 transition-all duration-300`}
+                    whileHover={{ x: 4, y: -4, boxShadow: `4px 4px 0px 0px ${item.color}` }}
+                    className="p-4 bg-[#1a1a18] border border-[#434143] hover:border-[#434143] transition-all duration-300 relative overflow-hidden group"
                   >
-                    <div className="flex items-start gap-3">
-                      <div className="p-2 bg-white/5 rounded-lg">
-                        <item.icon size={18} className="text-white" />
+                    <div className="absolute left-0 top-0 bottom-0 w-1 transition-all duration-300 group-hover:w-2" style={{ backgroundColor: item.color }} />
+                    <div className="flex items-start gap-4 pl-2">
+                      <div className="p-2 border border-[#434143] bg-[#282824]">
+                        <item.icon size={18} style={{ color: item.color }} />
                       </div>
                       <div>
                         <h4 className="font-medium text-white mb-1">

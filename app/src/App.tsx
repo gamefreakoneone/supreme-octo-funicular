@@ -27,7 +27,7 @@ function App() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#0f0f1a]"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1a1a18]"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -35,13 +35,15 @@ function App() {
             exit={{ opacity: 0, scale: 1.1 }}
             className="text-center"
           >
-            <div className="font-display text-3xl text-gradient">AB</div>
+            <div className="font-display text-4xl text-[#c5ef67] tracking-widest animate-pulse font-bold">INIT_SYS...</div>
             <motion.div
-              className="mt-4 h-0.5 w-24 bg-gradient-to-r from-accent-purple to-accent-pink mx-auto"
+              className="mt-4 h-[1px] w-48 bg-[#434143] mx-auto relative overflow-hidden"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-            />
+            >
+              <div className="absolute top-0 left-0 h-full w-1/3 bg-[#c5ef67] animate-pulse" />
+            </motion.div>
           </motion.div>
         </motion.div>
       ) : (

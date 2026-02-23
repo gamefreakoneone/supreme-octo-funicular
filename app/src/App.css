@@ -7,7 +7,7 @@ html {
 
 /* Custom focus styles */
 *:focus-visible {
-  outline: 2px solid rgba(168, 85, 247, 0.5);
+  outline: 2px solid rgba(197, 239, 103, 0.5); /* Synthetic Lime */
   outline-offset: 2px;
 }
 
@@ -58,7 +58,7 @@ p, li {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #a855f7, #ec4899);
+  background: #c5ef67;
   transition: width 0.25s ease;
 }
 
@@ -97,8 +97,7 @@ p, li {
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
-  overflow: hidden;
-  background: #0f0f1a;
+  background: #1a1a18;
 }
 
 .video-container iframe {

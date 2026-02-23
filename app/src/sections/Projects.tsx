@@ -21,7 +21,7 @@ const projects = [
     },
     videoId: 'IfepmZUKTZI',
     icon: Sparkles,
-    color: 'from-accent-purple/30 to-accent-pink/30',
+    color: '#ec4899', // Pink
   },
   {
     title: 'Project Memoria',
@@ -39,7 +39,7 @@ const projects = [
     },
     videoId: 'jn7uHg1R5oo',
     icon: Brain,
-    color: 'from-accent-cyan/30 to-accent-purple/30',
+    color: '#06b6d4', // Cyan
   },
   {
     title: 'Ctrl+Alt+Del Hate',
@@ -56,7 +56,7 @@ const projects = [
     },
     image: posterPhotoImage,
     icon: Shield,
-    color: 'from-accent-orange/30 to-accent-pink/30',
+    color: '#f97316', // Orange
   },
   {
     title: 'Where We Left Off',
@@ -73,7 +73,7 @@ const projects = [
     },
     image: whereWeLeftOffImage,
     icon: BookOpen,
-    color: 'from-accent-pink/30 to-accent-cyan/30',
+    color: '#c5ef67', // Lime
   },
 ];
 
@@ -81,13 +81,12 @@ export default function Projects() {
   return (
     <section id="projects" className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-accent-cyan/5 via-transparent to-accent-purple/5" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent-purple/10 rounded-full blur-3xl floating-orb" />
+      <div className="absolute inset-0 grid-background opacity-40 mix-blend-overlay" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-4 text-center">
-            <span className="text-gradient">Projects</span>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-4 text-center uppercase tracking-tight">
+            [ <span className="text-[#c5ef67]">Projects</span> ]
           </h2>
           <p className="text-zinc-400 text-center mb-16 max-w-2xl mx-auto">
             A selection of my work—where research meets creativity.
@@ -99,13 +98,13 @@ export default function Projects() {
           {projects.map((project, index) => (
             <ScrollReveal key={project.title} delay={index * 0.1}>
               <motion.div
-                whileHover={{ y: -4 }}
-                className="group h-full glass rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300"
+                whileHover={{ y: -4, x: -4, boxShadow: `4px 4px 0px 0px ${project.color}` }}
+                className="group h-full tech-glass rounded-none overflow-hidden transition-all duration-300 relative border border-[#434143]"
               >
                 {/* Project Media - Video or Image */}
                 <div className="relative aspect-video overflow-hidden">
                   {project.videoId ? (
-                    <div className="video-container rounded-t-2xl">
+                    <div className="video-container border-b border-[#434143]">
                       <iframe
                         src={`https://www.youtube.com/embed/${project.videoId}`}
                         title={project.title}
@@ -119,12 +118,12 @@ export default function Projects() {
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f1a] via-transparent to-transparent" />
+                       />
+                      <div className="absolute inset-0 border-b border-[#434143] mix-blend-overlay pointer-events-none" />
                     </>
                   ) : (
-                    <div className={`w-full h-full flex items-center justify-center bg-gradient-to-br ${project.color}`}>
-                      <project.icon size={64} className="text-white/30" />
+                    <div className="w-full h-full flex items-center justify-center bg-[#1a1a18] border-b border-[#434143]">
+                      <project.icon size={64} style={{ color: project.color }} className="opacity-50" />
                     </div>
                   )}
                 </div>
@@ -133,15 +132,15 @@ export default function Projects() {
                 <div className="p-6">
                   <div className="flex items-start justify-between gap-4 mb-3">
                     <div>
-                      <h3 className="font-display text-xl font-bold text-white group-hover:text-gradient transition-all">
+                      <h3 className="font-display text-xl font-bold text-white uppercase tracking-tight mb-1">
                         {project.title}
                       </h3>
-                      <p className={`text-sm bg-gradient-to-r ${project.color} bg-clip-text text-transparent`}>
+                      <p className="text-sm font-mono" style={{ color: project.color }}>
                         {project.subtitle}
                       </p>
                     </div>
-                    <div className={`p-2 rounded-lg bg-gradient-to-br ${project.color}`}>
-                      <project.icon size={20} className="text-white" />
+                    <div className="p-2 border border-[#434143] bg-[#1a1a18]">
+                      <project.icon size={20} style={{ color: project.color }} />
                     </div>
                   </div>
                   
@@ -152,8 +151,8 @@ export default function Projects() {
                   {/* Achievements */}
                   <ul className="space-y-1 mb-4">
                     {project.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start gap-2 text-zinc-500 text-xs">
-                        <span className="text-accent-purple">→</span>
+                      <li key={i} className="flex items-start gap-2 text-zinc-400 text-xs">
+                        <span style={{ color: project.color }} className="font-bold">{'>'}</span>
                         <span>{achievement}</span>
                       </li>
                     ))}
@@ -164,7 +163,7 @@ export default function Projects() {
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-white/5 text-zinc-400 text-xs rounded-full border border-white/5"
+                        className="px-2 py-1 bg-[#1a1a18] text-zinc-300 text-xs font-mono border border-[#434143]"
                       >
                         {tech}
                       </span>
@@ -178,8 +177,8 @@ export default function Projects() {
                         href={project.links.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 rounded-full text-zinc-300 hover:text-white text-sm transition-all duration-200"
-                        whileHover={{ scale: 1.02 }}
+                        className="flex items-center gap-2 px-4 py-2 bg-[#282824] hover:bg-white text-zinc-300 hover:text-[#1a1a18] border border-[#434143] hover:border-white text-sm font-bold uppercase transition-colors duration-200"
+                        whileHover={{ y: -2, x: -2, boxShadow: `2px 2px 0px 0px ${project.color}` }}
                         whileTap={{ scale: 0.98 }}
                       >
                         <Github size={14} />
@@ -191,8 +190,8 @@ export default function Projects() {
                         href={project.links.youtube}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 border border-red-500/30 hover:border-red-500/50 rounded-full text-red-400 hover:text-red-300 text-sm transition-all duration-200"
-                        whileHover={{ scale: 1.02 }}
+                        className="flex items-center gap-2 px-4 py-2 tech-glass hover:bg-white hover:text-[#1a1a18] border border-[#434143] text-zinc-300 text-sm font-bold uppercase transition-colors duration-200"
+                        whileHover={{ y: -2, x: -2, boxShadow: `2px 2px 0px 0px #ff0000` }}
                         whileTap={{ scale: 0.98 }}
                       >
                         <Youtube size={14} />

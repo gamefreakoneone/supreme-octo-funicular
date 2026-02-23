@@ -44,13 +44,12 @@ export default function Experience() {
   return (
     <section id="experience" className="relative py-24 lg:py-32 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-accent-purple/5 via-transparent to-accent-cyan/5" />
-      <div className="absolute top-1/4 left-0 w-64 h-64 bg-accent-pink/10 rounded-full blur-3xl floating-orb" />
+      <div className="absolute inset-0 grid-background opacity-40 mix-blend-overlay" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <ScrollReveal>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-4 text-center">
-            <span className="text-gradient">Experience</span>
+          <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-4 text-center uppercase tracking-tight">
+            [ <span className="text-[#c5ef67]">Experience</span> ]
           </h2>
           <p className="text-zinc-400 text-center mb-16 max-w-2xl mx-auto">
             My journey through research and engineering—building systems that matter.
@@ -60,7 +59,7 @@ export default function Experience() {
         {/* Timeline */}
         <div className="relative max-w-4xl mx-auto">
           {/* Vertical Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-accent-purple via-accent-pink to-accent-cyan transform md:-translate-x-1/2" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#c5ef67] via-[#7b6b89] to-transparent transform md:-translate-x-1/2" />
 
           {/* Experience Items */}
           <div className="space-y-12">
@@ -69,13 +68,13 @@ export default function Experience() {
                 <div className={`relative flex flex-col md:flex-row ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                 }`}>
-                  {/* Timeline Dot */}
+                  {/* Timeline Dot (Brutalist Diamond) */}
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 + index * 0.1, type: 'spring' }}
-                    className="absolute left-4 md:left-1/2 w-3 h-3 bg-accent-purple rounded-full transform -translate-x-1/2 md:-translate-x-1/2 border-2 border-[#0f0f1a] z-10 shadow-glow"
+                    className="absolute left-4 md:left-1/2 w-4 h-4 bg-[#1a1a18] border-2 border-[#c5ef67] transform -translate-x-1/2 md:-translate-x-1/2 rotate-45 z-10"
                   />
 
                   {/* Content */}
@@ -83,11 +82,14 @@ export default function Experience() {
                     index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'
                   }`}>
                     <motion.div
-                      whileHover={{ y: -4 }}
-                      className="p-6 glass rounded-2xl hover:border-white/20 transition-all duration-300"
+                      whileHover={{ x: index % 2 === 0 ? -4 : 4, y: -4 }}
+                      className="p-6 tech-glass group hover:border-[#c5ef67] transition-all duration-300 relative overflow-hidden"
                     >
+                      {/* Tech decorative corner */}
+                      <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#434143] group-hover:border-[#c5ef67] transition-colors" />
+
                       {/* Period */}
-                      <span className="inline-block px-3 py-1 bg-accent-purple/20 text-accent-purple text-xs font-medium rounded-full mb-3">
+                      <span className="inline-block px-3 py-1 bg-[#c5ef67]/10 text-[#c5ef67] border border-[#c5ef67]/30 text-xs font-bold font-display uppercase tracking-wider mb-4 rounded-sm">
                         {exp.period}
                       </span>
 
@@ -97,7 +99,7 @@ export default function Experience() {
                       </h3>
 
                       {/* Company */}
-                      <p className="text-accent-cyan font-medium mb-1">
+                      <p className="text-[#a1a1aa] font-medium mb-1">
                         {exp.company}
                       </p>
 
@@ -108,7 +110,7 @@ export default function Experience() {
 
                       {/* Project */}
                       {exp.project && (
-                        <p className="text-zinc-400 text-sm italic mb-4 border-l-2 border-accent-purple/30 pl-3">
+                        <p className="text-zinc-400 text-sm italic mb-4 border-l-2 border-[#7b6b89] pl-3 bg-[#1a1a18]/50 p-2">
                           {exp.project}
                         </p>
                       )}
@@ -118,8 +120,8 @@ export default function Experience() {
                         index % 2 === 0 ? 'md:text-left' : ''
                       }`}>
                         {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start gap-2 text-zinc-400 text-sm leading-relaxed">
-                            <span className="text-accent-purple mt-1">→</span>
+                          <li key={i} className="flex items-start gap-2 text-zinc-400 text-sm leading-relaxed group-hover:text-zinc-300 transition-colors">
+                            <span className="text-[#7b6b89] mt-1 font-bold">{'>'}</span>
                             <span>{achievement}</span>
                           </li>
                         ))}
