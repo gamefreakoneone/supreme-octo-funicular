@@ -16,7 +16,7 @@ const skills = [
 const currentWork = [
   {
     title: 'Project Memoria',
-    description: 'New features for our dementia care assistant—expanding capabilities and improving user experience.',
+    description: 'Recent winner of the Amazon Nova AI Hackathon (Best of Multimodal Understanding) — currently scaling system capabilities.',
     icon: Brain,
     color: '#7b6b89',
   },

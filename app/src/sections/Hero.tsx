@@ -56,7 +56,7 @@ export default function Hero() {
               className="text-zinc-400 text-lg mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
               Crafting intelligent systems at the intersection of research and creativity. 
-              Currently at USC Viterbi, building AI that matters.
+              Working on projects that would make me laugh in the future.
             </motion.p>
 
             {/* CTAs */}

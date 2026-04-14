@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Youtube, Sparkles, BookOpen, Shield, Brain } from 'lucide-react';
+import { Github, Youtube, Sparkles, BookOpen, Shield, Brain, ExternalLink } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import posterPhotoImage from '../../public/images/poster-photo.jpg';
 import whereWeLeftOffImage from '../../public/images/where-we-left-off.jpg';
@@ -28,6 +28,7 @@ const projects = [
     subtitle: 'AI Dementia Assistant',
     description: 'An AI-powered assistant for dementia care, featuring real-time fall detection, activity monitoring, and natural language video queries to help caregivers stay informed about patient wellbeing.',
     achievements: [
+      '🏆 Best of Multimodal Understanding track @ Amazon Nova AI Hackathon',
       '0.923 mAP@0.5 fall detection with YOLO11 fine-tuning',
       '6–8 second alert delivery with pose confirmation buffer',
       'Natural language queries over patient activities using SAM3',
@@ -35,9 +36,10 @@ const projects = [
     tech: ['YOLO11', 'SAM3', 'OpenAI API', 'Gemini API'],
     links: {
       github: 'https://github.com/gamefreakoneone/Project-Memoria_Dementia-Assistant',
-      youtube: 'https://youtu.be/jn7uHg1R5oo',
+      youtube: 'https://youtu.be/gYOgGcSjWnA?si=5Hvi_WWQGJ8uc6nJ',
+      devpost: 'https://devpost.com/software/project-memoria-the-dementia-assistant',
     },
-    videoId: 'jn7uHg1R5oo',
+    videoId: 'gYOgGcSjWnA',
     icon: Brain,
     color: '#06b6d4', // Cyan
   },
@@ -196,6 +198,19 @@ export default function Projects() {
                       >
                         <Youtube size={14} />
                         Watch
+                      </motion.a>
+                    )}
+                    {project.links.devpost && (
+                      <motion.a
+                        href={project.links.devpost}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 tech-glass hover:bg-white hover:text-[#1a1a18] border border-[#434143] text-zinc-300 text-sm font-bold uppercase transition-colors duration-200"
+                        whileHover={{ y: -2, x: -2, boxShadow: `2px 2px 0px 0px ${project.color}` }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <ExternalLink size={14} />
+                        Devpost
                       </motion.a>
                     )}
                   </div>

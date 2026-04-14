@@ -9,6 +9,7 @@ const experiences = [
     period: 'February 2026 – Present',
     project: 'Project: Memoria — AI dementia assistant',
     achievements: [
+      'Won "Best of Multimodal Understanding" track at the Amazon Nova AI Hackathon',
       'Designed real-time fall detection system by fine-tuning Ultralytics YOLO11, achieving 0.923 mAP@0.5 and 94% recall',
       'Reduced false positives with 3.5-second confirmation buffer, delivering alerts within 6–8 seconds',
       'Built natural-language video query pipeline using SAM3 segmentation and temporal analysis',
