@@ -1,10 +1,28 @@
 import { motion } from 'framer-motion';
-import { Github, Youtube, Sparkles, BookOpen, Shield, Brain, ExternalLink } from 'lucide-react';
+import { Github, Youtube, Sparkles, BookOpen, Shield, Brain, ExternalLink, Mic } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import posterPhotoImage from '../../public/images/poster-photo.jpg';
 import whereWeLeftOffImage from '../../public/images/where-we-left-off.jpg';
 
 const projects = [
+  {
+    title: 'ProbeIQ',
+    subtitle: 'Real-Time Voice Tutor',
+    description: 'A voice-first interactive media explanation platform where learners watch procedure videos and ask contextual questions in real time. A LiveKit-powered voice agent narrates segments, handles mid-sentence interruptions, and grounds every spoken answer in preprocessed video intelligence.',
+    achievements: [
+      'Led a team of 4 to ship a real-time voice pipeline with ~1 s interrupt-to-answer latency (Deepgram STT → MiniMax LLM/TTS)',
+      'Grounded every answer in source video via Qwen3-VL + Moss semantic search, achieving 73 % correct-segment retrieval and auto-navigating playback',
+      'Kept retrieval on the hot path with sub-10 ms Moss lookups so the voice agent never blocked on the network',
+    ],
+    tech: ['LiveKit', 'Next.js', 'Python', 'Deepgram', 'MiniMax', 'Moss'],
+    links: {
+      github: 'https://github.com/gamefreakoneone/ProbeIQ_Remix',
+      youtube: 'https://youtu.be/HHxjOoI9ISo',
+    },
+    videoId: 'HHxjOoI9ISo',
+    icon: Mic,
+    color: '#7b6b89', // Neural Violet
+  },
   {
     title: 'Defeat the Darkness',
     subtitle: 'AI-Powered Beat-Em-Up Game',
