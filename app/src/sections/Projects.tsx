@@ -6,6 +6,26 @@ import whereWeLeftOffImage from '../../public/images/where-we-left-off.jpg';
 
 const projects = [
   {
+    title: 'Project Memoria',
+    subtitle: 'AI Dementia Assistant',
+    description: 'An AI-powered assistant for dementia care, featuring real-time fall detection, activity monitoring, and natural language video queries to help caregivers stay informed about patient wellbeing.',
+    achievements: [
+      '🏆 Best of Multimodal Understanding track @ Amazon Nova AI Hackathon',
+      '0.923 mAP@0.5 fall detection with YOLO11 fine-tuning',
+      '6–8 second alert delivery with pose confirmation buffer',
+      'Natural language queries over patient activities using SAM3',
+    ],
+    tech: ['YOLO11', 'SAM3', 'OpenAI API', 'Gemini API'],
+    links: {
+      github: 'https://github.com/gamefreakoneone/Project-Memoria_Dementia-Assistant',
+      youtube: 'https://youtu.be/gYOgGcSjWnA?si=5Hvi_WWQGJ8uc6nJ',
+      devpost: 'https://devpost.com/software/project-memoria-the-dementia-assistant',
+    },
+    videoId: 'gYOgGcSjWnA',
+    icon: Brain,
+    color: '#06b6d4', // Cyan
+  },
+  {
     title: 'ProbeIQ',
     subtitle: 'Real-Time Voice Tutor',
     description: 'A voice-first interactive media explanation platform where learners watch procedure videos and ask contextual questions in real time. A LiveKit-powered voice agent narrates segments, handles mid-sentence interruptions, and grounds every spoken answer in preprocessed video intelligence.',
@@ -40,26 +60,6 @@ const projects = [
     videoId: 'IfepmZUKTZI',
     icon: Sparkles,
     color: '#ec4899', // Pink
-  },
-  {
-    title: 'Project Memoria',
-    subtitle: 'AI Dementia Assistant',
-    description: 'An AI-powered assistant for dementia care, featuring real-time fall detection, activity monitoring, and natural language video queries to help caregivers stay informed about patient wellbeing.',
-    achievements: [
-      '🏆 Best of Multimodal Understanding track @ Amazon Nova AI Hackathon',
-      '0.923 mAP@0.5 fall detection with YOLO11 fine-tuning',
-      '6–8 second alert delivery with pose confirmation buffer',
-      'Natural language queries over patient activities using SAM3',
-    ],
-    tech: ['YOLO11', 'SAM3', 'OpenAI API', 'Gemini API'],
-    links: {
-      github: 'https://github.com/gamefreakoneone/Project-Memoria_Dementia-Assistant',
-      youtube: 'https://youtu.be/gYOgGcSjWnA?si=5Hvi_WWQGJ8uc6nJ',
-      devpost: 'https://devpost.com/software/project-memoria-the-dementia-assistant',
-    },
-    videoId: 'gYOgGcSjWnA',
-    icon: Brain,
-    color: '#06b6d4', // Cyan
   },
   {
     title: 'Ctrl+Alt+Del Hate',
@@ -116,7 +116,7 @@ export default function Projects() {
         {/* Projects Grid */}
         <div className="grid lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <ScrollReveal key={project.title} delay={index * 0.1}>
+            <ScrollReveal key={project.title} delay={index * 0.1} className={project.title === 'Project Memoria' ? 'lg:col-span-2' : ''}>
               <motion.div
                 whileHover={{ y: -4, x: -4, boxShadow: `4px 4px 0px 0px ${project.color}` }}
                 className="group h-full tech-glass rounded-none overflow-hidden transition-all duration-300 relative border border-[#434143]"
