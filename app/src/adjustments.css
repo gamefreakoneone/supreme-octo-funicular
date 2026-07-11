@@ -1,0 +1,47 @@
+/* Optical corrections based on the first rendered review. */
+.hero .portrait-plane img {
+  object-position: 68% 42%;
+}
+
+.projects {
+  padding-top: 72px;
+}
+
+.memoria .project-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 38px 44px;
+}
+
+.memoria .project-body h3 {
+  font-size: clamp(2.5rem, 3vw, 3.8rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.memoria .project-body > p:not(.project-kicker) {
+  max-width: 680px;
+  margin-bottom: 12px;
+}
+
+.memoria .project-body ul {
+  margin-block: 12px 16px;
+}
+
+@media (max-width: 900px) {
+  .memoria .project-body {
+    padding: 34px 30px;
+  }
+}
+
+@media (max-width: 560px) {
+  .memoria .project-body {
+    padding: 28px 22px;
+  }
+
+  .hero .portrait-plane img {
+    object-position: 66% 40%;
+  }
+}

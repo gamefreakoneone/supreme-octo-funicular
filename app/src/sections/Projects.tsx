@@ -1,242 +1,47 @@
-import { motion } from 'framer-motion';
-import { Github, Youtube, Sparkles, BookOpen, Shield, Brain, ExternalLink, Mic } from 'lucide-react';
-import ScrollReveal from '../components/ScrollReveal';
-import posterPhotoImage from '../../public/images/poster-photo.jpg';
-import whereWeLeftOffImage from '../../public/images/where-we-left-off.jpg';
+import { ArrowUpRight, Github, Play } from 'lucide-react';
 
-const projects = [
-  {
-    title: 'Project Memoria',
-    subtitle: 'AI Dementia Assistant',
-    description: 'An AI-powered assistant for dementia care, featuring real-time fall detection, activity monitoring, and natural language video queries to help caregivers stay informed about patient wellbeing.',
-    achievements: [
-      '🏆 Best of Multimodal Understanding track @ Amazon Nova AI Hackathon',
-      '0.923 mAP@0.5 fall detection with YOLO11 fine-tuning',
-      '6–8 second alert delivery with pose confirmation buffer',
-      'Natural language queries over patient activities using SAM3',
-    ],
-    tech: ['YOLO11', 'SAM3', 'OpenAI API', 'Gemini API'],
-    links: {
-      github: 'https://github.com/gamefreakoneone/Project-Memoria_Dementia-Assistant',
-      youtube: 'https://youtu.be/gYOgGcSjWnA?si=5Hvi_WWQGJ8uc6nJ',
-      devpost: 'https://devpost.com/software/project-memoria-the-dementia-assistant',
-    },
-    videoId: 'gYOgGcSjWnA',
-    icon: Brain,
-    color: '#06b6d4', // Cyan
-  },
-  {
-    title: 'ProbeIQ',
-    subtitle: 'Real-Time Voice Tutor',
-    description: 'A voice-first interactive media explanation platform where learners watch procedure videos and ask contextual questions in real time. A LiveKit-powered voice agent narrates segments, handles mid-sentence interruptions, and grounds every spoken answer in preprocessed video intelligence.',
-    achievements: [
-      'Led a team of 4 to ship a real-time voice pipeline with ~1 s interrupt-to-answer latency (Deepgram STT → MiniMax LLM/TTS)',
-      'Grounded every answer in source video via Qwen3-VL + Moss semantic search, achieving 73 % correct-segment retrieval and auto-navigating playback',
-      'Kept retrieval on the hot path with sub-10 ms Moss lookups so the voice agent never blocked on the network',
-    ],
-    tech: ['LiveKit', 'Next.js', 'Python', 'Deepgram', 'MiniMax', 'Moss'],
-    links: {
-      github: 'https://github.com/gamefreakoneone/ProbeIQ_Remix',
-      youtube: 'https://youtu.be/HHxjOoI9ISo',
-    },
-    videoId: 'HHxjOoI9ISo',
-    icon: Mic,
-    color: '#7b6b89', // Neural Violet
-  },
-  {
-    title: 'Defeat the Darkness',
-    subtitle: 'AI-Powered Beat-Em-Up Game',
-    description: 'A real-time multimodal AI game where every playthrough is unique. Built during a hackathon, it integrates three Gemini 3 capabilities—image generation, structured output, and live voice streaming—to create procedurally-generated gameplay.',
-    achievements: [
-      '5 concurrent Gemini Pro calls for parallel asset generation',
-      'Self-correcting pipeline with LLM-as-a-Judge validation',
-      'Real-time voice-driven boss battles',
-    ],
-    tech: ['Gemini API', 'React', 'FastAPI', 'WebSockets'],
-    links: {
-      github: 'https://github.com/gamefreakoneone/all-your-base-is-ours',
-      youtube: 'https://youtu.be/IfepmZUKTZI',
-    },
-    videoId: 'IfepmZUKTZI',
-    icon: Sparkles,
-    color: '#ec4899', // Pink
-  },
-  {
-    title: 'Ctrl+Alt+Del Hate',
-    subtitle: 'Explainable Hate Speech Detection',
-    description: 'A multi-task hate speech detection model that goes beyond binary classification. LoRA-finetuned LLaMA-3.2-1B to identify target demographics and score toxicity severity.',
-    achievements: [
-      '83.7% accuracy on multi-class classification',
-      '0.80 Spearman correlation on severity scoring',
-      'Three-task architecture with shared encoder',
-    ],
-    tech: ['LLaMA', 'LoRA', 'PyTorch', 'Hugging Face'],
-    links: {
-      github: 'https://github.com/gamefreakoneone/Ctrl-Alt-Del-Hate',
-    },
-    image: posterPhotoImage,
-    icon: Shield,
-    color: '#f97316', // Orange
-  },
-  {
-    title: 'Where We Left Off',
-    subtitle: 'AI Reading Companion',
-    description: 'A spoiler-protected reading companion that knows exactly where you are in a book. Uses chapter-aware RAG with ChromaDB metadata filtering to answer questions without revealing future plot points.',
-    achievements: [
-      'LangGraph agentic workflows with conditional semantic search',
-      'Entity resolution pipeline for character alias tracking',
-      'Interactive PDF reader with relationship graphs',
-    ],
-    tech: ['LangChain', 'LangGraph', 'ChromaDB', 'Next.js', 'FastAPI'],
-    links: {
-      github: 'https://github.com/gamefreakoneone/Where-we-left-off-reader',
-    },
-    image: whereWeLeftOffImage,
-    icon: BookOpen,
-    color: '#c5ef67', // Lime
-  },
-];
+const projectLinks = {
+  memoria: { github: 'https://github.com/gamefreakoneone/Project-Memoria_Dementia-Assistant', watch: 'https://youtu.be/gYOgGcSjWnA', devpost: 'https://devpost.com/software/project-memoria-the-dementia-assistant' },
+  probeiq: { github: 'https://github.com/gamefreakoneone/ProbeIQ_Remix', watch: 'https://youtu.be/HHxjOoI9ISo' },
+  darkness: { github: 'https://github.com/gamefreakoneone/all-your-base-is-ours', watch: 'https://youtu.be/IfepmZUKTZI' },
+  hate: { github: 'https://github.com/gamefreakoneone/Ctrl-Alt-Del-Hate' },
+  reader: { github: 'https://github.com/gamefreakoneone/Where-we-left-off-reader' },
+};
+
+function Action({ href, children }: { href: string; children: React.ReactNode }) {
+  return <a className="project-action" href={href} target="_blank" rel="noreferrer">{children}<ArrowUpRight /></a>;
+}
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-24 lg:py-32 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 grid-background opacity-40 mix-blend-overlay" />
+    <section id="projects" className="projects section-frame content-section">
+      <header className="section-heading projects-heading"><h2>Selected<br />projects</h2><p>AI systems, voice intelligence, and human-centered technologies—built to solve real problems.</p><span>01—05</span></header>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <ScrollReveal>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold text-white mb-4 text-center uppercase tracking-tight">
-            [ <span className="text-[#c5ef67]">Projects</span> ]
-          </h2>
-          <p className="text-zinc-400 text-center mb-16 max-w-2xl mx-auto">
-            A selection of my work—where research meets creativity.
-          </p>
-        </ScrollReveal>
-
-        {/* Projects Grid */}
-        <div className="grid lg:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <ScrollReveal key={project.title} delay={index * 0.1} className={project.title === 'Project Memoria' ? 'lg:col-span-2' : ''}>
-              <motion.div
-                whileHover={{ y: -4, x: -4, boxShadow: `4px 4px 0px 0px ${project.color}` }}
-                className="group h-full tech-glass rounded-none overflow-hidden transition-all duration-300 relative border border-[#434143]"
-              >
-                {/* Project Media - Video or Image */}
-                <div className="relative aspect-video overflow-hidden">
-                  {project.videoId ? (
-                    <div className="video-container border-b border-[#434143]">
-                      <iframe
-                        src={`https://www.youtube.com/embed/${project.videoId}`}
-                        title={project.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      />
-                    </div>
-                  ) : project.image ? (
-                    <>
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                       />
-                      <div className="absolute inset-0 border-b border-[#434143] mix-blend-overlay pointer-events-none" />
-                    </>
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-[#1a1a18] border-b border-[#434143]">
-                      <project.icon size={64} style={{ color: project.color }} className="opacity-50" />
-                    </div>
-                  )}
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <div>
-                      <h3 className="font-display text-xl font-bold text-white uppercase tracking-tight mb-1">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm font-mono" style={{ color: project.color }}>
-                        {project.subtitle}
-                      </p>
-                    </div>
-                    <div className="p-2 border border-[#434143] bg-[#1a1a18]">
-                      <project.icon size={20} style={{ color: project.color }} />
-                    </div>
-                  </div>
-                  
-                  <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                    {project.description}
-                  </p>
-
-                  {/* Achievements */}
-                  <ul className="space-y-1 mb-4">
-                    {project.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start gap-2 text-zinc-400 text-xs">
-                        <span style={{ color: project.color }} className="font-bold">{'>'}</span>
-                        <span>{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-[#1a1a18] text-zinc-300 text-xs font-mono border border-[#434143]"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="flex gap-3">
-                    {project.links.github && (
-                      <motion.a
-                        href={project.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-[#282824] hover:bg-white text-zinc-300 hover:text-[#1a1a18] border border-[#434143] hover:border-white text-sm font-bold uppercase transition-colors duration-200"
-                        whileHover={{ y: -2, x: -2, boxShadow: `2px 2px 0px 0px ${project.color}` }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <Github size={14} />
-                        Code
-                      </motion.a>
-                    )}
-                    {project.links.youtube && (
-                      <motion.a
-                        href={project.links.youtube}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 tech-glass hover:bg-white hover:text-[#1a1a18] border border-[#434143] text-zinc-300 text-sm font-bold uppercase transition-colors duration-200"
-                        whileHover={{ y: -2, x: -2, boxShadow: `2px 2px 0px 0px #ff0000` }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <Youtube size={14} />
-                        Watch
-                      </motion.a>
-                    )}
-                    {project.links.devpost && (
-                      <motion.a
-                        href={project.links.devpost}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 tech-glass hover:bg-white hover:text-[#1a1a18] border border-[#434143] text-zinc-300 text-sm font-bold uppercase transition-colors duration-200"
-                        whileHover={{ y: -2, x: -2, boxShadow: `2px 2px 0px 0px ${project.color}` }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <ExternalLink size={14} />
-                        Devpost
-                      </motion.a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            </ScrollReveal>
-          ))}
+      <article className="project-feature memoria">
+        <div className="project-media"><iframe src="https://www.youtube.com/embed/gYOgGcSjWnA" title="Project Memoria demo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div>
+        <div className="project-body">
+          <p className="project-kicker">AI Dementia Assistant</p><h3>Project Memoria</h3>
+          <p>An AI-powered assistant for dementia care, featuring real-time fall detection, activity monitoring, and natural language video queries to help caregivers stay informed about patient wellbeing.</p>
+          <ul><li>Best of Multimodal Understanding track @ Amazon Nova AI Hackathon</li><li>0.923 mAP@0.5 fall detection with YOLO11 fine-tuning</li><li>6–8 second alert delivery with pose confirmation buffer</li><li>Natural language queries over patient activities using SAM3</li></ul>
+          <div className="tech-list"><span>YOLO11</span><span>SAM3</span><span>OpenAI API</span><span>Gemini API</span></div>
+          <div className="project-actions"><Action href={projectLinks.memoria.github}><Github /> Code</Action><Action href={projectLinks.memoria.watch}><Play /> Watch</Action><Action href={projectLinks.memoria.devpost}>Devpost</Action></div>
         </div>
+      </article>
+
+      <div className="project-pair">
+        <article className="project-medium probeiq">
+          <div className="project-media"><iframe src="https://www.youtube.com/embed/HHxjOoI9ISo" title="ProbeIQ demo" loading="lazy" allowFullScreen /></div>
+          <div className="project-body"><p className="project-kicker">Real-Time Voice Tutor</p><h3>ProbeIQ</h3><p>A voice-first interactive media explanation platform where learners watch procedure videos and ask contextual questions in real time.</p><ul><li>~1 s interrupt-to-answer latency</li><li>73% correct-segment retrieval</li><li>Sub-10 ms Moss lookups</li></ul><div className="tech-list"><span>LiveKit</span><span>Next.js</span><span>Python</span><span>Deepgram</span><span>MiniMax</span><span>Moss</span></div><div className="project-actions"><Action href={projectLinks.probeiq.github}>Code</Action><Action href={projectLinks.probeiq.watch}>Watch</Action></div></div>
+        </article>
+        <article className="project-medium darkness">
+          <div className="project-media"><iframe src="https://www.youtube.com/embed/IfepmZUKTZI" title="Defeat the Darkness demo" loading="lazy" allowFullScreen /></div>
+          <div className="project-body"><p className="project-kicker">AI-Powered Beat-Em-Up Game</p><h3>Defeat the Darkness</h3><p>A real-time multimodal AI game where every playthrough is unique, combining image generation, structured output, and live voice streaming.</p><ul><li>5 concurrent Gemini Pro calls</li><li>Self-correcting LLM-as-a-Judge pipeline</li><li>Real-time voice-driven boss battles</li></ul><div className="tech-list"><span>Gemini API</span><span>React</span><span>FastAPI</span><span>WebSockets</span></div><div className="project-actions"><Action href={projectLinks.darkness.github}>Code</Action><Action href={projectLinks.darkness.watch}>Watch</Action></div></div>
+        </article>
+      </div>
+
+      <div className="project-compact-list">
+        <article className="project-compact"><img src="/images/ctrl-alt-del-poster.jpg" alt="Amogh and collaborator presenting the Ctrl+Alt+Del Hate research poster" /><div><p className="project-kicker">Explainable Hate Speech Detection</p><h3>Ctrl+Alt+Del Hate</h3><p>A multi-task hate speech detection model that goes beyond binary classification. LoRA-finetuned LLaMA-3.2-1B to identify target demographics and score toxicity severity.</p><ul><li>83.7% multi-class accuracy</li><li>0.80 Spearman correlation</li><li>Three-task shared encoder</li></ul><div className="tech-list"><span>LLaMA</span><span>LoRA</span><span>PyTorch</span><span>Hugging Face</span></div><Action href={projectLinks.hate.github}>Code</Action></div></article>
+        <article className="project-compact reverse"><img src="/images/where-we-left-off.jpg" alt="Where We Left Off reading companion interface" /><div><p className="project-kicker">AI Reading Companion</p><h3>Where We Left Off</h3><p>A spoiler-protected reading companion that knows exactly where you are in a book, using chapter-aware RAG with ChromaDB metadata filtering.</p><ul><li>LangGraph conditional semantic search</li><li>Entity resolution for character aliases</li><li>Interactive PDF reader with relationship graphs</li></ul><div className="tech-list"><span>LangChain</span><span>LangGraph</span><span>ChromaDB</span><span>Next.js</span><span>FastAPI</span></div><Action href={projectLinks.reader.github}>Code</Action></div></article>
       </div>
     </section>
   );
