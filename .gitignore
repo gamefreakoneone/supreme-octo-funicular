@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 ignore
+
+# Local original photography (may contain GPS/EXIF metadata)
+photos/

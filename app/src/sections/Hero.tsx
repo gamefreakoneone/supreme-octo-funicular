@@ -18,8 +18,8 @@ export default function Hero() {
         </div>
       </div>
       <div className="hero-visual">
-        <div className="portrait-plane"><img src="/images/amogh-blue-portrait.jpg" alt="Amogh Biju smiling in a blue hoodie" /></div>
-        <figure className="metro-strip"><img src="/images/la-metro-dusk.jpg" alt="Los Angeles Metro platform at dusk" /></figure>
+        <div className="portrait-plane"><img src="/images/amogh-blue-portrait.webp" alt="Amogh Biju smiling in a blue hoodie" /></div>
+        <figure className="metro-strip"><img src="/images/la-metro-dusk.webp" alt="Los Angeles Metro platform at dusk" /></figure>
         <div className="sun-mark" aria-hidden="true"><span /></div>
         <p className="journal-note">Los Angeles<br />signal journal<br />vol. 01</p>
       </div>

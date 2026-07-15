@@ -11,8 +11,8 @@ export default function About() {
       </div>
       <div className="photo-journal">
         <figure className="photo-large"><img loading="lazy" src="/images/strawberry-peak.webp" alt="Amogh hiking at Strawberry Peak above the clouds" /><figcaption>Above the clouds, Strawberry Peak</figcaption></figure>
-        <figure className="photo-small"><img loading="lazy" src="/images/griffith-night.jpg" alt="Amogh laughing at Griffith Observatory with Los Angeles behind him" /><figcaption>Griffith, after dark</figcaption></figure>
-        <figure className="photo-city"><img loading="lazy" src="/images/little-tokyo.jpg" alt="Little Tokyo street scene in Los Angeles" /><figcaption>Notes from Los Angeles</figcaption></figure>
+        <figure className="photo-small"><img loading="lazy" src="/images/griffith-night.webp" alt="Amogh laughing at Griffith Observatory with Los Angeles behind him" /><figcaption>Griffith, after dark</figcaption></figure>
+        <figure className="photo-city"><img loading="lazy" src="/images/little-tokyo.webp" alt="Little Tokyo street scene in Los Angeles" /><figcaption>Notes from Los Angeles</figcaption></figure>
       </div>
       <div className="skills-ledger"><p>Working knowledge</p>{skills.map((skill, index) => <span key={skill}><b>{String(index + 1).padStart(2, '0')}</b>{skill}</span>)}</div>
     </section>
