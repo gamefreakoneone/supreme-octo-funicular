@@ -1,7 +1,7 @@
 import { ArrowUpRight, Github, Play } from 'lucide-react';
 
 const projectLinks = {
-  memoria: { github: 'https://github.com/gamefreakoneone/Project-Memoria_Dementia-Assistant', watch: 'https://youtu.be/gYOgGcSjWnA', devpost: 'https://devpost.com/software/project-memoria-the-dementia-assistant' },
+  memoria: { github: 'https://github.com/gamefreakoneone/Project-Memoria_Dementia-Assistant', watch: 'https://youtu.be/Vg1PW2EBVL8', devpost: 'https://devpost.com/software/project-memoria-the-dementia-assistant' },
   probeiq: { github: 'https://github.com/gamefreakoneone/ProbeIQ_Remix', watch: 'https://youtu.be/HHxjOoI9ISo' },
   darkness: { github: 'https://github.com/gamefreakoneone/all-your-base-is-ours', watch: 'https://youtu.be/IfepmZUKTZI' },
   hate: { github: 'https://github.com/gamefreakoneone/Ctrl-Alt-Del-Hate' },
@@ -12,22 +12,34 @@ function Action({ href, children }: { href: string; children: React.ReactNode })
   return <a className="project-action" href={href} target="_blank" rel="noreferrer">{children}<ArrowUpRight /></a>;
 }
 
+function MemoriaFeature() {
+  return (
+    <article className="project-feature memoria" aria-labelledby="memoria-title">
+      <div className="project-media"><iframe src="https://www.youtube.com/embed/Vg1PW2EBVL8" title="Project Memoria proactive memory and safety agent demo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div>
+      <div className="project-body">
+        <p className="project-kicker">Proactive Memory &amp; Safety Agent</p>
+        <h3 id="memoria-title">Project Memoria</h3>
+        <p>A dementia-support prototype that helps patients find objects, recall recent events, and receive proactive reminders and evidence-grounded safety guidance.</p>
+        <ul>
+          <li>Proactive safety warnings, morning reports, and time/event-triggered reminders</li>
+          <li>Grounded object finding and activity recall with visible supporting evidence</li>
+          <li>Durable patient memory across conversations, profile facts, and reminders</li>
+          <li>0.923 mAP@0.5 custom YOLO fall detection</li>
+        </ul>
+        <div className="tech-list"><span>Qwen Cloud</span><span>FastAPI</span><span>React</span><span>MongoDB</span><span>ChromaDB</span><span>YOLO</span></div>
+        <div className="project-actions"><Action href={projectLinks.memoria.github}><Github /> View source</Action><Action href={projectLinks.memoria.watch}><Play /> Watch</Action><Action href={projectLinks.memoria.devpost}>Devpost</Action></div>
+        <p className="project-disclaimer">Functional prototype—not a medical device or emergency-response replacement.</p>
+      </div>
+    </article>
+  );
+}
+
 export default function Projects() {
   return (
     <section id="projects" className="projects section-frame content-section">
       <header className="section-heading projects-heading"><h2>Selected<br />projects</h2><p>AI systems, voice intelligence, and human-centered technologies—built to solve real problems.</p><span>01—05</span></header>
 
-      <article className="project-feature memoria">
-        <div className="project-media"><iframe src="https://www.youtube.com/embed/gYOgGcSjWnA" title="Project Memoria demo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen /></div>
-        <div className="project-body">
-          <p className="project-kicker">AI Dementia Assistant</p><h3>Project Memoria</h3>
-          <p>An AI-powered assistant for dementia care, featuring real-time fall detection, activity monitoring, and natural language video queries to help caregivers stay informed about patient wellbeing.</p>
-          <ul><li>Best of Multimodal Understanding track @ Amazon Nova AI Hackathon</li><li>0.923 mAP@0.5 fall detection with YOLO11 fine-tuning</li><li>6–8 second alert delivery with pose confirmation buffer</li><li>Natural language queries over patient activities using SAM3</li></ul>
-          <div className="tech-list"><span>YOLO11</span><span>SAM3</span><span>OpenAI API</span><span>Gemini API</span></div>
-          <div className="project-actions"><Action href={projectLinks.memoria.github}><Github /> Code</Action><Action href={projectLinks.memoria.watch}><Play /> Watch</Action><Action href={projectLinks.memoria.devpost}>Devpost</Action></div>
-        </div>
-      </article>
-
+      <MemoriaFeature />
       <div className="project-pair">
         <article className="project-medium probeiq">
           <div className="project-media"><iframe src="https://www.youtube.com/embed/HHxjOoI9ISo" title="ProbeIQ demo" loading="lazy" allowFullScreen /></div>
